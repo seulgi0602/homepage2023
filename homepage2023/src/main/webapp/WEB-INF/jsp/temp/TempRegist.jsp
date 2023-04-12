@@ -16,7 +16,7 @@
 			<c:set var="actionUrl" value="/temp/update.do"/>
 		</c:when>
 		<c:otherwise>
-			<c:set var="actionUrl" value="temp/insert.do"/>
+			<c:set var="actionUrl" value="/temp/insert.do"/>
 		</c:otherwise>		
 </c:choose>
 

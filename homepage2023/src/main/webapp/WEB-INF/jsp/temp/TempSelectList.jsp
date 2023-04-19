@@ -28,9 +28,9 @@ th, td{padding:5px;border:1px solid #000;}</style>
 					<td><c:out value="${result.tempId}"/></td>
 					<td>
 					  <c:url var="viewUrl" value="/temp/select.do">
-					  	<c:param name="tempId" value="${result.tempId} }"/>
+					  	<c:param name="tempId" value="${result.tempId}"/>
 					  </c:url>	
-					<a href="${viewUrl}"><c:out value="${result.tempVal}"/></a>
+					<a href="${viewUrl}"><c:out value="${result.tempVal}"/>
 					</td>
 				</tr>
 			</c:forEach>

@@ -12,7 +12,11 @@ public interface BoardService {
 	//게시물 목록수
 	public int selectBoardListCnt(BoardVO vo) throws Exception;
 	
+	//게시물 등록하기
+	public String insertBoard(BoardVO vo) throws Exception;
 	
+	//게시물 상세정보
+	public BoardVO selectBoard(BoardVO vo) throws Exception;
 	
 	
 }

@@ -54,17 +54,17 @@
 	<input type="radio" id="noticeAtY" value="Y" name="noticeAt" <c:if test="${result.noticeAt eq 'Y'}">checked="checked"</c:if>>
 	&nbsp;&nbsp;&nbsp;
 	<label for="noticeAtN">아니오:</label>
-	<input type="radio" id="noticeAtN" value="Y" name="noticeAt" <c:if test="${result.noticeAt ne 'Y'}">checked="checked"</c:if>>
+	<input type="radio" id="noticeAtN" value="N" name="noticeAt" <c:if test="${result.noticeAt ne 'Y'}">checked="checked"</c:if>>
 	</td>
 	</tr>
 	<tr>
 	<th scope="row">비공개여부</th>
 	<td>
 	<label for="othbcAtY">예:</label>
-	<input type="radio" id="othbcAtY" value="Y" name="othbcAt" <c:if test="${result.noticeAt eq 'Y'}">checked="checked"</c:if>>
+	<input type="radio" id="othbcAtY" value="Y" name="othbcAt" <c:if test="${result.othbcAt eq 'Y'}">checked="checked"</c:if>>
     &nbsp;&nbsp;&nbsp;
     <label for="othbcAtN">아니오:</label>
-    <input type="radio" id="othbcAtN" value="Y" name="othbcAt" <c:if test="${result.noticeAt ne 'Y'}">checked="checked"</c:if>>
+    <input type="radio" id="othbcAtN" value="N" name="othbcAt" <c:if test="${result.othbcAt ne 'Y'}">checked="checked"</c:if>>
 	</td>
 	</tr>
 	<tr>
@@ -101,10 +101,10 @@
 		</c:choose>
 		<c:url var="listUrl" value="/board/selectList.do"/>
 		<a href="${listUrl}" class="btn">취소</a>
-		</div>
-		</form>
-		</div>
-		</div>
+	  </div>
+	</form>
+  </div>
+</div>
 		
 <script>
 $(document).ready(function(){
@@ -112,7 +112,7 @@ $(document).ready(function(){
 	$("#btn-reg").click(function(){
     $("#frm").submit();
     return false;
-	}
+	
 });
 
 	//게시글 삭제

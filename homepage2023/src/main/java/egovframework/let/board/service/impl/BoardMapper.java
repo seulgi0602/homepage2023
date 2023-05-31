@@ -20,7 +20,12 @@ public interface BoardMapper {
 	//게시물 상세 정보
 	 BoardVO selectBoard(BoardVO vo) throws Exception;
 	 
-	 //죄회수 업
+	 //조회수 업
 	 void updateViewCnt(BoardVO vo) throws Exception;
 	 
+	//게시물 수정하기
+	 void updateBoard(BoardVO vo) throws Exception;
+	 
+	//게시물삭제하기
+	 void deleteBoard(BoardVO vo) throws Exception;
 }

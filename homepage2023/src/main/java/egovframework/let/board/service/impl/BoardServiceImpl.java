@@ -47,5 +47,13 @@ public class BoardServiceImpl extends EgovAbstractServiceImpl implements BoardSe
 			boardMapper.updateViewCnt(vo);			
 			return boardMapper.selectBoard(vo);
 		}
+	//게시물 수정하기
+		public void updateBoard(BoardVO vo) throws Exception{
+			boardMapper.updateBoard(vo);
+		}
+	//게시물삭제하기
+		public void deleteBoard(BoardVO vo) throws Exception{
+			boardMapper.deleteBoard(vo);
+		}
 
 }

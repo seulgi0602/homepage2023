@@ -83,7 +83,7 @@ public class FileMngUtil {
 			//-----------------------------------------------
 			
 			//파일확장자 체크
-			int index =orginFileName.lastIndexOf(",");
+			int index =orginFileName.lastIndexOf(".");
 			String fileExt =orginFileName.substring(index+1);
 			
 			//저장파일명

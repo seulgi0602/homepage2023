@@ -10,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Language" content="ko" >
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <title>회원가입</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -33,13 +34,13 @@
 <h3 class="icon2 hidden">기본정보</h3>
 <form id="frm" name="frm" method="post" action="/join/insertMember.do" onsubmit="return regist();">
 	<input type="hidden" name="loginType" value="${searchVO.loginType}"/>
-	<input type="hidden" name="idCheckAt" value="N"/>
+	<input type="hidden" id="idCheckAt" value="N"/>
 	
 	<table class="join_chart">
 		<caption>게시글작성</caption>
 		<colgroup>
 			<col style="width:200px" />
-			</col>
+			<col />
 		</colgroup>
 			<tbody>
 				<tr>
@@ -63,7 +64,14 @@
 				</tr>
 				<tr>
 					<th><strong class="star">*</strong><label for="passwordHint">비밀번호힌트</label></th>
-					<td><input type="text" id="passwordHint" name="passwordHint" required/></td>
+					<td>
+						<select id="passwordHint" name="passwordHint" required>
+							<option value="1">취미 생활은?</option>
+							<option value="2">애완견 이름은?</option>
+							<option value="3">취직하고 싶은 곳은?</option>
+							<option value="4">여행가고 싶은 곳은?</option>		
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th><strong class="star">*</strong><label for="passwordCnsr">비밀번호정답</label></th>
@@ -98,25 +106,28 @@ $(document).ready(function(){
 		
 		if(emplyrId){
 			$.ajax({
-				url:"/join/duplicateCheck.do",
+				url : "/join/duplicateCheck.do",
 				type : "post",
 				data : {"emplyrId" : emplyrId},
 				dataType : "json",
+				contentType: "application/json; charset=utf-8",
 				success : function(data){
 					if(data.successYn == "Y"){
 						alert("사용가능한 ID입니다.");
 						$("#idCheckAt").val("Y");
 					}else{
+						console.log(data.message);
 						alert(data.message);
 						$("#idCheckAt").val("N");
 					}
-				},error : function(){
+				}, error : function(){
 					alert("error");
 				}
 			});
 		}else{
-			alert("ID를 입력해주세요");
+			alert("ID를 입력해주세요.");
 		}
+		
 		return false;
 	});
 	
@@ -127,14 +138,13 @@ $(document).ready(function(){
 	});
 });
 
-//validation체크
+//validation 체크
 function regist(){
 	//아이디 중복 검사 체크
-	/*
 	if($("#idCheckAt").val() != "Y"){
 		alert("아이디 중복 검사를 해주세요.");
 		return false;
-	}else*/ if(!$("#emplyrId").val()){
+	}else if(!$("#emplyrId").val()){
 		alert("아이디를 입력해주세요.");
 		return false;
 	}else if(!$("#userNm").val()){

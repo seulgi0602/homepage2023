@@ -1,10 +1,12 @@
 package egovframework.let.join.web;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -14,21 +16,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.service.EgovFileMngService;
 import egovframework.com.cmm.service.FileVO;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.let.board.service.BoardService;
 import egovframework.let.board.service.BoardVO;
+import egovframework.let.join.service.JoinService;
 import egovframework.let.join.service.JoinVO;
 import egovframework.let.utl.fcc.service.EgovStringUtil;
 import egovframework.let.utl.fcc.service.FileMngUtil;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import net.sf.json.JSONObject;
 
 @Controller
 public class JoinController {
+	@Resource(name ="joinService")
+	private JoinService joinService;
+	
+	
+	@Resource(name ="egovMessageSource")
+	EgovMessageSource egovMessageSource;
+	
 	
 	//약관동의
 	@RequestMapping(value = "/join/siteUseAgree.do")
@@ -50,6 +62,43 @@ public class JoinController {
 		
 		return "join/MemberRegist";
 	}
+	
+	//아이디 중복체크
+	@RequestMapping(value = "/join/duplicateCheck.do")
+	public void duplicateCheck(@ModelAttribute("searchVO") JoinVO vo, HttpServletRequest request,HttpServletResponse response, ModelMap model) throws Exception{
+	 String successYn ="Y";
+	 String message ="성공";
+	 
+	 JSONObject jo = new JSONObject();
+	 
+	 response.setContentType("application/json; charset=utf-8");
+	 int duplicateCnt = joinService.duplicateCheck(vo);
+	 if(duplicateCnt >0) {
+		 successYn="N";
+	 	 message = egovMessageSource.getMessage("fail.duplicate.member");//이미 사용중인 ID입니다.
+		
+	}
+	jo.put("successYn",successYn);
+	jo.put("message",message);
+	
+	PrintWriter printWriter = response.getWriter();
+	printWriter.println(jo.toString());
+	printWriter.close();
+	}
+	
+	//회원가입
+	@RequestMapping(value = "/join/insertMember.do")
+	public String insertMember(@ModelAttribute("searchVO") JoinVO vo, HttpServletRequest request, ModelMap model) throws Exception{
+		if(joinService.duplicateCheck(vo)>0) {
+			model.addAttribute("message",egovMessageSource.getMessage("fail.duplicate.member"));//이미 사용중인 ID입니다.
+			return "forward:/join/memberType.do";
+		}else {
+			joinService.insertJoin(vo);
+			model.addAttribute("message",egovMessageSource.getMessage("join.request.msg"));
+		}
+		return "join/MemberComplete";
+	}
+	
 	
 
 }

@@ -27,5 +27,4 @@ public interface CrudMapper {
 	//CRUD데이터 삭제하기
 	 void deleteCrud(CrudVO vo) throws Exception;
 	 
-	 
 }

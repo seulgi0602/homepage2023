@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Language" content-"ko">
+<meta http-equiv="Content-Language" content-"ko">	
 <title>데이터 가져오기</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 

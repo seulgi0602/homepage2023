@@ -43,7 +43,7 @@
 			<p class="mB20">카카오회원</p>
 			<div class="btn-cont">
 			<a class="btn-kakao" href="#" data-type="join">
-				<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="150" alt="카카오 로그인 버튼">
+				<img src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="150" alt="카카오 로그인 버튼"/>
 			</a>	
 			</div>
 		</div>
@@ -59,7 +59,63 @@
 			</a>	
 			</div>
 		</div>
-	</article>
+</article>		
+<form id="joinFrm" name="joinFrm" method="post" action="/join/insertMember.do">
+	<input type="hidden" name="loginType" value=""/>	
+	<input type="hidden" name="emplyrId"/>	
+	<input type="hidden" name="userNm"/>	
+	<input type="hidden" name="emailAdres"/>
+</form>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>		
+<script>
+$(document).ready(function(){
+	//카카오톡로그인버튼
+	$(".btn-kakao").click(function(){
+		const type = $(this).data("type");
+		kakaoLogin(type);
+		return false;
+	});
+});
+//카카오 키 정보 입력
+Kakao.init('526623ee8b7d0f83434205bd9b90b585');//본인 javaScript 키
+
+//카카오SDK 초기화
+Kakao.isInitialized();
+
+//카카오로그인
+function kakaoLogin(type){
+	Kakao.Auth.login({
+		success:function(response){
+			Kakao.API.request({
+				url:'/v2/user/me',
+				success:function(response){
+					console.log(response)
+					$("input[name=loginType]").val("KAKAO");
+					$("input[name=emplyrId]").val(response.id);
+					$("input[name=userNm]").val(response.properties.nickname);
+					$("input[name=emailAdres]").val(response.kakao_account.email);
+ 					$("#joinFrm").submit();
+				},
+				fail: function(error){
+					console.log(error)
+				},
+			})
+		},fail: function(error){
+			console.log(error)
+		},
+	})
+}
+<c:if test ="${not empty message}">
+	alert("${message}");
+</c:if>
+
+<c:if test ="${not empty loginMessage}">
+	alert("${loginMessage}");
+</c:if>
+
+</script>
+	
 </div>
 </body>
 </html>	

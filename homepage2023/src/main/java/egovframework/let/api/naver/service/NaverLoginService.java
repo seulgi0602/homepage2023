@@ -1,14 +1,10 @@
 package egovframework.let.api.naver.service;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
-
-import egovframework.com.cmm.LoginVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 public interface NaverLoginService {
 	

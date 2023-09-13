@@ -54,7 +54,7 @@
 		<div class="confirm_box">
 			<p class="mB20">네이버회원</p>
 			<div class="btn-cont">
-			<a class="btn-naver" href="${naverAuthUrl }" data-type="join">
+			<a class="btn-naver" href="${naverAuthUrl}" data-type="join">
 				<img src="/asset/front/images/common/btn-naver.png" width="150" alt="네이버 로그인 버튼">
 			</a>	
 			</div>

@@ -27,7 +27,7 @@ public class MemberController {
    
    //회원ID찾기
    @RequestMapping(value = "/member/findId.do")
-   public String findId(@ModelAttribute("serachVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
+   public String findId(@ModelAttribute("searchVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
 	   
 	   return "/member/FindId";
    }
@@ -48,14 +48,14 @@ public class MemberController {
    
    //회원비밀번호 찾기
    @RequestMapping(value = "/member/findPassword.do")
-   public String findPassword(@ModelAttribute("serachVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
+   public String findPassword(@ModelAttribute("searchVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
 	   
 	   return "/member/FindPassword"; 
    }
    
    //회원비밀번호수정
    @RequestMapping(value = "/member/findPasswordRegist.do")
-   public String findPasswordRegist(@ModelAttribute("serachVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
+   public String findPasswordRegist(@ModelAttribute("searchVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
    
 	   	 MemberVO result = memberService.findPassword(vo);
 	   	 if(result == null || EgovStringUtil.isEmpty(result.getEmplyrId())) {
@@ -69,7 +69,7 @@ public class MemberController {
    
    //회원비밀번호업데이트
    @RequestMapping(value = "/member/findPasswordComplete.do")
-   public String findPasswordComplete(@ModelAttribute("serachVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
+   public String findPasswordComplete(@ModelAttribute("searchVO") MemberVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
 	   
 	   memberService.passwordUpdate(vo);
 	   model.addAttribute("loginMessage","비밀번호가 업데이트 되었습니다.");

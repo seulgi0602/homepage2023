@@ -73,10 +73,10 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 	private int applyFCnt;
 	
 	//검색일자
-	private String searcgDate;
-	
+	private String searchDate;
 	
 	//getter&setter
+
 	public String getResveId() {
 		return resveId;
 	}
@@ -253,13 +253,15 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 		this.applyFCnt = applyFCnt;
 	}
 
-	public String getSearcgDate() {
-		return searcgDate;
+	public String getSearchDate() {
+		return searchDate;
 	}
 
-	public void setSearcgDate(String searcgDate) {
-		this.searcgDate = searcgDate;
+	public void setSearchDate(String searchDate) {
+		this.searchDate = searchDate;
 	}
+	
+	
 	
 	
 	

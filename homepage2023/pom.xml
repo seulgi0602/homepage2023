@@ -317,6 +317,14 @@
                     <artifactId>maven-pmd-plugin</artifactId>
                     <version>3.1</version>
                 </plugin>
+                
+                <!-- pom.xml오류로 새로넣은것 -->
+	              <plugin>
+	               <groupId>org.apache.maven.plugins</groupId>
+	               <artifactId>maven-war-plugin</artifactId>
+	               <version>3.3.2</version>
+	            </plugin>
+         		<!-- 새로넣은것 끝 -->
             </plugins>
         </pluginManagement>
         <plugins>

@@ -76,7 +76,7 @@ public class MemberManageController {
 	   if(!"admin".equals(user.getId())) {
 		   return "redirect:/";
 	   }
-	   
+	       
 	   EgovMap result = memberService.selectMber(vo);
 	   model.addAttribute("result",result);
 	   

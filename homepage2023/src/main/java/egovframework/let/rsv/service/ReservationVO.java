@@ -19,7 +19,7 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 	private String recNm;
 	
 	//최대참가인원
-	private String maxAplyCnt;
+	private int maxAplyCnt;
 	
 	//운영시작일
 	private String useBeginDt;
@@ -77,6 +77,7 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 	
 	//getter&setter
 
+
 	public String getResveId() {
 		return resveId;
 	}
@@ -109,11 +110,11 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 		this.recNm = recNm;
 	}
 
-	public String getMaxAplyCnt() {
+	public int getMaxAplyCnt() {
 		return maxAplyCnt;
 	}
 
-	public void setMaxAplyCnt(String maxAplyCnt) {
+	public void setMaxAplyCnt(int maxAplyCnt) {
 		this.maxAplyCnt = maxAplyCnt;
 	}
 
@@ -260,6 +261,8 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 	public void setSearchDate(String searchDate) {
 		this.searchDate = searchDate;
 	}
+	
+	
 	
 	
 	

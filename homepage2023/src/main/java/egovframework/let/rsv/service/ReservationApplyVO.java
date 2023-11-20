@@ -2,78 +2,54 @@ package egovframework.let.rsv.service;
 
 import java.io.Serializable;
 
-import egovframework.com.cmm.ComDefaultVO;
-
 public class ReservationApplyVO extends ReservationVO implements Serializable {
-	
 	//예약ID
 	private String resveId;
-	
 	//예약자ID
 	private String reqstId;
-	
-	//신청구분코트
+	//신청구분코드
 	private String resveDe;
-	
-	//신청자명
+	//신청자 명
 	private String chargerNm;
-	
 	//연락처
 	private String telno;
-	
 	//이메일
 	private String email;
-	
-	//R:접수, o:승인완료 , X:반려
+	/*
+	 * R : 접수, O : 승인완료, X : 반려
+	 * */
 	private String confmSeCode;
-	
 	//승인자ID
 	private String confmerId;
-	
 	//반려사유
 	private String returnResn;
-	
 	//승인일자
 	private java.util.Date confmPnttm;
-	
 	//등록IP
 	private String creatIp;
-	
 	//사용여부
 	private String useAt;
-	
 	//최초등록시점
 	private java.util.Date frstRegistPnttm;
-	
 	//최초등록자ID
 	private String frstRegisterId;
-	
 	//최종수정시점
 	private java.util.Date lastUpdtPnttm;
-	
-	//최종수정ID
+	//최종수정자ID
 	private String lastUpdusrId;
-	
 	//사용자ID
 	private String userId;
-	
 	//관리자여부
 	private String mngAt;
-	
 	//에러코드
 	private String errorCode;
-	
 	//메세지
 	private String message;
-	
 	//엑셀여부
-	private int excelAt;
-	
+	private String excelAt;
 	//임시예약자ID
 	private String reqsttempId;
 	
-	
-	//getter&setter
 	public String getResveId() {
 		return resveId;
 	}
@@ -234,11 +210,11 @@ public class ReservationApplyVO extends ReservationVO implements Serializable {
 		this.message = message;
 	}
 
-	public int getExcelAt() {
+	public String getExcelAt() {
 		return excelAt;
 	}
 
-	public void setExcelAt(int excelAt) {
+	public void setExcelAt(String excelAt) {
 		this.excelAt = excelAt;
 	}
 
@@ -249,7 +225,6 @@ public class ReservationApplyVO extends ReservationVO implements Serializable {
 	public void setReqsttempId(String reqsttempId) {
 		this.reqsttempId = reqsttempId;
 	}
-	
 	
 	
 	

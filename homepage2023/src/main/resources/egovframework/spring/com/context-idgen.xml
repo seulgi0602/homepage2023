@@ -2105,12 +2105,12 @@
         <property name="strategy" ref="reqStrategy"/>
         <property name="blockSize" value="10"/>
         <property name="table" value="IDS"/>
-        <property name="tableName" value="RQTTEMPID"/>
+        <property name="tableName" value="RQTTEMP_ID"/>
     </bean>
 
     <bean name="reqTempStrategy" 
     class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-        <property name="prefix" value="RQTTEMP"/>
+        <property name="prefix" value="RQTTEMP_"/>
         <property name="cipers" value="12"/>
         <property name="fillChar" value="0"/>
     </bean>

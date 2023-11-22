@@ -1,6 +1,9 @@
 package egovframework.let.rsv.service;
 
 import java.util.List;
+import java.util.Map;
+
+import egovframework.com.cmm.service.FileVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 
@@ -29,5 +32,10 @@ public interface ReservationApplyService {
 	
 	//예약자 승인처리
 	public void updateReservationConfirm(ReservationApplyVO vo)throws Exception;
+	
+	//예약자 엑셀 업로드
+	public Map<String, Object> excelUpload(FileVO file, ReservationApplyVO vo)throws Exception;
+	
+	
 	
 }
